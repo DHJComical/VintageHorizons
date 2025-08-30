@@ -170,7 +170,7 @@ public class QuadElementBuffer extends GLElementBuffer
 					this.indicesCount * GLEnums.getTypeSize(this.type), 0);
 		}
 		
-		MemoryUtil.memFree(buffer);
+		MemoryUtil.nmemFree(MemoryUtil.memAddress(buffer));
 	}
 	
 }

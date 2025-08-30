@@ -93,7 +93,7 @@ public class ScreenQuad
 		this.boxBuffer = new GLVertexBuffer(false);
 		this.boxBuffer.bind();
 		this.boxBuffer.uploadBuffer(buffer, box_vertices.length, EDhApiGpuUploadMethod.DATA, box_vertices.length * Float.BYTES);
-		MemoryUtil.memFree(buffer);
+		MemoryUtil.nmemFree(MemoryUtil.memAddress(buffer));
 	}
 	
 }

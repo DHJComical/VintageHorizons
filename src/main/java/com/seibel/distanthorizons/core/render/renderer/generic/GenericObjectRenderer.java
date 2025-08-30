@@ -228,7 +228,7 @@ public class GenericObjectRenderer implements IDhApiCustomRenderRegister
 		this.boxVertexBuffer = new GLVertexBuffer(false);
 		this.boxVertexBuffer.bind();
 		this.boxVertexBuffer.uploadBuffer(boxVerticesBuffer, 8, EDhApiGpuUploadMethod.DATA, BOX_VERTICES.length * Float.BYTES);
-		MemoryUtil.memFree(boxVerticesBuffer);
+		MemoryUtil.nmemFree(MemoryUtil.memAddress(boxVerticesBuffer));
 		
 		// box vertex indexes
 		ByteBuffer solidIndexBuffer = MemoryUtil.memAlloc(BOX_INDICES.length * Integer.BYTES);
@@ -237,7 +237,7 @@ public class GenericObjectRenderer implements IDhApiCustomRenderRegister
 		this.boxIndexBuffer = new GLElementBuffer(false);
 		this.boxIndexBuffer.uploadBuffer(solidIndexBuffer, EDhApiGpuUploadMethod.DATA, BOX_INDICES.length * Integer.BYTES, GL32.GL_STATIC_DRAW);
 		this.boxIndexBuffer.bind();
-		MemoryUtil.memFree(solidIndexBuffer);
+		MemoryUtil.nmemFree(MemoryUtil.memAddress(solidIndexBuffer));
 	}
 	private void addGenericDebugObjects()
 	{

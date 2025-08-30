@@ -144,12 +144,12 @@ public class ColumnRenderBuffer implements AutoCloseable
 				
 				for (ByteBuffer buffer : opaqueBuffers)
 				{
-					MemoryUtil.memFree(buffer);
+					MemoryUtil.nmemFree(MemoryUtil.memAddress(buffer));
 				}
 				
 				for (ByteBuffer buffer : transparentBuffers)
 				{
-					MemoryUtil.memFree(buffer);
+					MemoryUtil.nmemFree(MemoryUtil.memAddress(buffer));
 				}
 			}
 		});
